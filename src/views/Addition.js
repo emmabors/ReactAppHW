@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class Home extends Component {
+export default class Addition extends Component {
     constructor() {
         console.log('I am being constructed')
         super()
