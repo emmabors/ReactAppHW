@@ -70,3 +70,18 @@ body{
 .link{
   color: yellow;
 }
+
+.todolist{
+  text-align: center;
+}
+
+li{
+  list-style-type: none;
+}
+
+.cbox:checked + label {
+  /* font-size: 5em; */
+  color: black;
+  text-decoration: line-through;
+}
+

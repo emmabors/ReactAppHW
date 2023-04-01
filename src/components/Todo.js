@@ -1,33 +1,42 @@
-import React, { Component } from 'react'
 
-export default class Todo extends Component {
-  constructor(){
-    super()
-    this.state =({
-      todo: [],
-      value: ''
-    });
-  }
+import React, { useState } from 'react';
+
+export default function Todo() {
+  const [list, setList] = useState([]);
   
-  render() {
-    const mylist = this.state.todo.map(todo => (
-      <li className='todo_item'>{todo.value}
-      <button>Edit</button>
-      <button>Delete</button>
-      </li>
-    ));
+  const onSubmits = (event) => {
+    event.preventDefault();
+    setList([...list,event.target.newtask.value]);
+    console.log(list)
+  };
 
-    return (
-      <div>
-        <form>
-        <input name='task' placeholder='Type task here' value=''></input>
-        <button>Add</button>
-        </form>
-        <ul>
-        {mylist}
-      </ul>
-      </div>
-    )
+  const displayItems = () => {
+    return list.map((item)=>{
+      return (
+        <div>
+        <li><input type="checkbox" class='cbox'></input> <label for="cbox3"> {item} </label></li>  
+        </div>
+      )
+    })
   }
+
+
+
+
+  return (
+    <div class='todolist'>
+      <br></br>
+      <br></br>
+      <h1>To-do list:</h1>
+      <form onSubmit={onSubmits}>
+        <input type='text' name='newtask'/>
+        <button type='submit'>Add</button>
+      </form>
+      <ul>
+        {displayItems()}
+        
+      </ul>
+    </div>
+  )
 }
 
